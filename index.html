@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Conceptual: Derechos Humanos</title>
+    <!-- Incluimos Mermaid.js para generar el diagrama dinámicamente -->
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9fbfb;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding: 40px 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        p.description {
+            color: #666;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .mermaid-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+            width: 100%;
+            max-width: 1200px;
+            overflow-x: auto;
+            text-align: center;
+        }
+        .legend {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+        }
+        .color-box {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+            border-radius: 4px;
+            border: 1px solid rgba(0,0,0,0.2);
+        }
+        /* Colores de la leyenda */
+        .c-principios { background-color: #d4edda; }
+        .c-instituciones { background-color: #d1ecf1; }
+        .c-problemas { background-color: #f8d7da; }
+        .c-motivos { background-color: #fff3cd; }
+        .c-grupos { background-color: #e2d9f3; }
+    </style>
+</head>
+<body>
+
+    <h1>Mapa Conceptual: Derechos Humanos</h1>
+    <p class="description">Representación interactiva del mapa rediseñado con estructura y lógica mejoradas.</p>
+
+    <div class="mermaid-container">
+        <div class="mermaid">
+        graph TD
+            %% Definición de estilos basados en la paleta original
+            classDef principios fill:#d4edda,stroke:#28a745,stroke-width:2px,color:#155724;
+            classDef instituciones fill:#d1ecf1,stroke:#17a2b8,stroke-width:2px,color:#0c5460;
+            classDef problemas fill:#f8d7da,stroke:#dc3545,stroke-width:2px,color:#721c24;
+            classDef motivos fill:#fff3cd,stroke:#ffc107,stroke-width:2px,color:#856404;
+            classDef grupos fill:#e2d9f3,stroke:#6f42c1,stroke-width:2px,color:#381873;
+            classDef principal fill:#c3e6cb,stroke:#1e7e34,stroke-width:3px,color:#155724,font-weight:bold;
+
+            %% Nodos Principales
+            DH[DERECHOS HUMANOS]:::principal
+            
+            %% Principios
+            DI[Dignidad Humana]:::principios
+            LI[Libertad]:::principios
+            IG[Igualdad Jurídica]:::principios
+            RE[Respeto]:::principios
+
+            %% Instituciones
+            IP[Instituciones de Protección]:::instituciones
+            ONU[ONU]:::instituciones
+            UNI[UNICEF]:::instituciones
+
+            %% Problemáticas
+            DS[Discriminación]:::problemas
+            PO[Pobreza]:::problemas
+            VU[Vulnerabilidad]:::problemas
+            VI[Violencia]:::problemas
+
+            %% Motivos/Factores
+            CS[Condición Social]:::motivos
+            GE[Género]:::motivos
+            DC[Discapacidades]:::motivos
+
+            %% Grupos Afectados
+            MU[Mujeres]:::grupos
+            LG[LGBTI]:::grupos
+            IN[Infancia / Niñez]:::grupos
+
+            %% Conexiones: Principios
+            DH -->|se fundamentan en| DI
+            DH -->|garantizan| LI
+            DH -->|garantizan| IG
+            DH -->|exigen| RE
+            
+            %% Conexiones: Instituciones
+            DH -->|son garantizados por| IP
+            IP -->|incluyen| ONU
+            IP -->|incluyen| UNI
+            
+            %% Conexiones: Problemáticas (Prohibición)
+            DH -->|prohíben explícitamente la| DS
+            IG -.->|es vulnerada por| DS
+
+            %% Conexiones: Ramificación de Discriminación
+            DS -->|por motivos de| CS
+            DS -->|por motivos de| GE
+            DS -->|por motivos de| DC
+
+            %% Consecuencias
+            CS -->|está asociada a| PO
+            GE -->|deriva en| VI
+            DC -->|aumentan la| VU
+            PO -->|incrementa la| VU
+            
+            %% Acciones de instituciones
+            UNI -->|protege a la| IN
+            UNI -->|combate la| PO
+
+            %% Impacto en grupos vulnerables
+            VI -->|afecta gravemente a| MU
+            VI -->|afecta gravemente a| LG
+            
+            VU -->|afecta a| MU
+            VU -->|afecta a| LG
+            VU -->|afecta a| IN
+            
+        </div>
+    </div>
+
+    <!-- Leyenda -->
+    <div class="legend">
+        <div class="legend-item"><div class="color-box c-principios"></div> Principios / Valores</div>
+        <div class="legend-item"><div class="color-box c-instituciones"></div> Institución / Garantía</div>
+        <div class="legend-item"><div class="color-box c-motivos"></div> Motivos / Factores</div>
+        <div class="legend-item"><div class="color-box c-problemas"></div> Problemáticas</div>
+        <div class="legend-item"><div class="color-box c-grupos"></div> Grupos Afectados</div>
+    </div>
+
+    <script>
+        // Inicializamos Mermaid con un tema limpio
+        mermaid.initialize({ 
+            startOnLoad: true, 
+            theme: 'default',
+            flowchart: {
+                curve: 'basis', // Hace las líneas más suaves
+                nodeSpacing: 50,
+                rankSpacing: 50
+            }
+        });
+    </script>
+</body>
+</html>
