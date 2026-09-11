@@ -1,179 +1,263 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mapa Conceptual: Derechos Humanos</title>
-    <!-- Incluimos Mermaid.js para generar el diagrama dinámicamente -->
-    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f9fbfb;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0;
-            padding: 40px 20px;
-        }
-        h1 {
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-        p.description {
-            color: #666;
-            margin-bottom: 30px;
-            text-align: center;
-        }
-        .mermaid-container {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-            width: 100%;
-            max-width: 1200px;
-            overflow-x: auto;
-            text-align: center;
-        }
-        .legend {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 30px;
-            padding: 20px;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-        .legend-item {
-            display: flex;
-            align-items: center;
-            font-size: 14px;
-        }
-        .color-box {
-            width: 20px;
-            height: 20px;
-            margin-right: 8px;
-            border-radius: 4px;
-            border: 1px solid rgba(0,0,0,0.2);
-        }
-        /* Colores de la leyenda */
-        .c-principios { background-color: #d4edda; }
-        .c-instituciones { background-color: #d1ecf1; }
-        .c-problemas { background-color: #f8d7da; }
-        .c-motivos { background-color: #fff3cd; }
-        .c-grupos { background-color: #e2d9f3; }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversor y Explicación de Sistemas Numéricos</title>
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --accent: #38bdf8;
+      --text: #f8fafc;
+      --muted: #94a3b8;
+      --highlight: #f59e0b;
+      --border: #334155;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      margin: 0;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--accent);
+      margin-bottom: 2rem;
+    }
+
+    .exercise-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    h2 {
+      margin-top: 0;
+      font-size: 1.25rem;
+      color: var(--accent);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+    }
+
+    p {
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+      font-size: 0.95rem;
+    }
+
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.5rem 0.75rem;
+      text-align: center;
+    }
+
+    th {
+      background-color: #0b1120;
+      color: var(--accent);
+    }
+
+    .highlight {
+      color: var(--highlight);
+      font-weight: bold;
+    }
+
+    .result-box {
+      background-color: #0b1120;
+      border-left: 4px solid var(--accent);
+      padding: 0.75rem 1rem;
+      font-family: monospace;
+      font-size: 1.05rem;
+      margin-top: 1rem;
+    }
+
+    .arrow-up {
+      color: var(--highlight);
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
 
-    <h1>Mapa Conceptual: Derechos Humanos</h1>
-    <p class="description">Representación interactiva del mapa rediseñado con estructura y lógica mejoradas.</p>
+<div class="container">
+  <h1>Procedimiento de Conversión de Sistemas Numéricos</h1>
 
-    <div class="mermaid-container">
-        <div class="mermaid">
-        graph TD
-            %% Definición de estilos basados en la paleta original
-            classDef principios fill:#d4edda,stroke:#28a745,stroke-width:2px,color:#155724;
-            classDef instituciones fill:#d1ecf1,stroke:#17a2b8,stroke-width:2px,color:#0c5460;
-            classDef problemas fill:#f8d7da,stroke:#dc3545,stroke-width:2px,color:#721c24;
-            classDef motivos fill:#fff3cd,stroke:#ffc107,stroke-width:2px,color:#856404;
-            classDef grupos fill:#e2d9f3,stroke:#6f42c1,stroke-width:2px,color:#381873;
-            classDef principal fill:#c3e6cb,stroke:#1e7e34,stroke-width:3px,color:#155724,font-weight:bold;
+  <!-- Ejercicio 1 -->
+  <div class="exercise-card">
+    <h2>1. Decimal a Binario: 3846₁₀ → Binario</h2>
+    <p>Método: <strong>Divisiones sucesivas entre 2</strong>. El resultado se lee desde el último residuo (abajo) hacia el primero (arriba).</p>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>Paso</th>
+          <th>Operación</th>
+          <th>Cociente entero</th>
+          <th>Residuo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>3846 ÷ 2</td><td>1923</td><td class="highlight">0</td></tr>
+        <tr><td>2</td><td>1923 ÷ 2</td><td>961</td><td class="highlight">1</td></tr>
+        <tr><td>3</td><td>961 ÷ 2</td><td>480</td><td class="highlight">1</td></tr>
+        <tr><td>4</td><td>480 ÷ 2</td><td>240</td><td class="highlight">0</td></tr>
+        <tr><td>5</td><td>240 ÷ 2</td><td>120</td><td class="highlight">0</td></tr>
+        <tr><td>6</td><td>120 ÷ 2</td><td>60</td><td class="highlight">0</td></tr>
+        <tr><td>7</td><td>60 ÷ 2</td><td>30</td><td class="highlight">0</td></tr>
+        <tr><td>8</td><td>30 ÷ 2</td><td>15</td><td class="highlight">0</td></tr>
+        <tr><td>9</td><td>15 ÷ 2</td><td>7</td><td class="highlight">1</td></tr>
+        <tr><td>10</td><td>7 ÷ 2</td><td>3</td><td class="highlight">1</td></tr>
+        <tr><td>11</td><td>3 ÷ 2</td><td>1</td><td class="highlight">1</td></tr>
+        <tr><td>12</td><td>1 ÷ 2</td><td>0</td><td class="highlight">1</td></tr>
+      </tbody>
+    </table>
 
-            %% Nodos Principales
-            DH[DERECHOS HUMANOS]:::principal
-            
-            %% Principios
-            DI[Dignidad Humana]:::principios
-            LI[Libertad]:::principios
-            IG[Igualdad Jurídica]:::principios
-            RE[Respeto]:::principios
-
-            %% Instituciones
-            IP[Instituciones de Protección]:::instituciones
-            ONU[ONU]:::instituciones
-            UNI[UNICEF]:::instituciones
-
-            %% Problemáticas
-            DS[Discriminación]:::problemas
-            PO[Pobreza]:::problemas
-            VU[Vulnerabilidad]:::problemas
-            VI[Violencia]:::problemas
-
-            %% Motivos/Factores
-            CS[Condición Social]:::motivos
-            GE[Género]:::motivos
-            DC[Discapacidades]:::motivos
-
-            %% Grupos Afectados
-            MU[Mujeres]:::grupos
-            LG[LGBTI]:::grupos
-            IN[Infancia / Niñez]:::grupos
-
-            %% Conexiones: Principios
-            DH -->|se fundamentan en| DI
-            DH -->|garantizan| LI
-            DH -->|garantizan| IG
-            DH -->|exigen| RE
-            
-            %% Conexiones: Instituciones
-            DH -->|son garantizados por| IP
-            IP -->|incluyen| ONU
-            IP -->|incluyen| UNI
-            
-            %% Conexiones: Problemáticas (Prohibición)
-            DH -->|prohíben explícitamente la| DS
-            IG -.->|es vulnerada por| DS
-
-            %% Conexiones: Ramificación de Discriminación
-            DS -->|por motivos de| CS
-            DS -->|por motivos de| GE
-            DS -->|por motivos de| DC
-
-            %% Consecuencias
-            CS -->|está asociada a| PO
-            GE -->|deriva en| VI
-            DC -->|aumentan la| VU
-            PO -->|incrementa la| VU
-            
-            %% Acciones de instituciones
-            UNI -->|protege a la| IN
-            UNI -->|combate la| PO
-
-            %% Impacto en grupos vulnerables
-            VI -->|afecta gravemente a| MU
-            VI -->|afecta gravemente a| LG
-            
-            VU -->|afecta a| MU
-            VU -->|afecta a| LG
-            VU -->|afecta a| IN
-            
-        </div>
+    <div class="result-box">
+      Lectura de abajo hacia arriba <span class="arrow-up">↑</span>: <strong>111100000110₂</strong>
     </div>
+  </div>
 
-    <!-- Leyenda -->
-    <div class="legend">
-        <div class="legend-item"><div class="color-box c-principios"></div> Principios / Valores</div>
-        <div class="legend-item"><div class="color-box c-instituciones"></div> Institución / Garantía</div>
-        <div class="legend-item"><div class="color-box c-motivos"></div> Motivos / Factores</div>
-        <div class="legend-item"><div class="color-box c-problemas"></div> Problemáticas</div>
-        <div class="legend-item"><div class="color-box c-grupos"></div> Grupos Afectados</div>
+  <!-- Ejercicio 2 -->
+  <div class="exercise-card">
+    <h2>2. Binario a Decimal: 1111000111₂ → Decimal</h2>
+    <p>Método: <strong>Suma de pesos posicionales</strong> (potencias de base 2).</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Posición</th>
+          <th>9</th><th>8</th><th>7</th><th>6</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Dígito</strong></td>
+          <td class="highlight">1</td><td class="highlight">1</td><td class="highlight">1</td><td class="highlight">1</td>
+          <td>0</td><td>0</td><td>0</td>
+          <td class="highlight">1</td><td class="highlight">1</td><td class="highlight">1</td>
+        </tr>
+        <tr>
+          <td><strong>Potencia</strong></td>
+          <td>2⁹</td><td>2⁸</td><td>2⁷</td><td>2⁶</td><td>2⁵</td><td>2⁴</td><td>2³</td><td>2²</td><td>2¹</td><td>2⁰</td>
+        </tr>
+        <tr>
+          <td><strong>Valor</strong></td>
+          <td>512</td><td>256</td><td>128</td><td>64</td><td>32</td><td>16</td><td>8</td><td>4</td><td>2</td><td>1</td>
+        </tr>
+        <tr>
+          <td><strong>Subtotal</strong></td>
+          <td>512</td><td>256</td><td>128</td><td>64</td><td>0</td><td>0</td><td>0</td><td>4</td><td>2</td><td>1</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="result-box">
+      512 + 256 + 128 + 64 + 4 + 2 + 1 = <strong>967₁₀</strong>
     </div>
+  </div>
 
-    <script>
-        // Inicializamos Mermaid con un tema limpio
-        mermaid.initialize({ 
-            startOnLoad: true, 
-            theme: 'default',
-            flowchart: {
-                curve: 'basis', // Hace las líneas más suaves
-                nodeSpacing: 50,
-                rankSpacing: 50
-            }
-        });
-    </script>
+  <!-- Ejercicio 3 -->
+  <div class="exercise-card">
+    <h2>3. Octal a Decimal: 304₈ → Decimal</h2>
+    <p>Método: <strong>Suma ponderada con potencias de base 8</strong>.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Dígito</th>
+          <th>Posición</th>
+          <th>Potencia</th>
+          <th>Cálculo</th>
+          <th>Resultado parcial</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight">3</td>
+          <td>2</td>
+          <td>8² = 64</td>
+          <td>3 × 64</td>
+          <td>192</td>
+        </tr>
+        <tr>
+          <td class="highlight">0</td>
+          <td>1</td>
+          <td>8¹ = 8</td>
+          <td>0 × 8</td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td class="highlight">4</td>
+          <td>0</td>
+          <td>8⁰ = 1</td>
+          <td>4 × 1</td>
+          <td>4</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="result-box">
+      192 + 0 + 4 = <strong>196₁₀</strong>
+    </div>
+  </div>
+
+  <!-- Ejercicio 4 -->
+  <div class="exercise-card">
+    <h2>4. Hexadecimal a Decimal: 4B2CD₁₆ → Decimal</h2>
+    <p>Equivalencias: <strong>B = 11</strong>, <strong>C = 12</strong>, <strong>D = 13</strong>. Base: 16.</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Carácter</th>
+          <th>Valor decimal</th>
+          <th>Posición</th>
+          <th>Potencia (16ⁿ)</th>
+          <th>Cálculo</th>
+          <th>Resultado parcial</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="highlight">4</td><td>4</td><td>4</td><td>16⁴ = 65,536</td><td>4 × 65,536</td><td>262,144</td>
+        </tr>
+        <tr>
+          <td class="highlight">B</td><td>11</td><td>3</td><td>16³ = 4,096</td><td>11 × 4,096</td><td>45,056</td>
+        </tr>
+        <tr>
+          <td class="highlight">2</td><td>2</td><td>2</td><td>16² = 256</td><td>2 × 256</td><td>512</td>
+        </tr>
+        <tr>
+          <td class="highlight">C</td><td>12</td><td>1</td><td>16¹ = 16</td><td>12 × 16</td><td>192</td>
+        </tr>
+        <tr>
+          <td class="highlight">D</td><td>13</td><td>0</td><td>16⁰ = 1</td><td>13 × 1</td><td>13</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="result-box">
+      262,144 + 45,056 + 512 + 192 + 13 = <strong>307,917₁₀</strong>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
