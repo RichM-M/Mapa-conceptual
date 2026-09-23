@@ -1,263 +1,170 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Conversor y Explicación de Sistemas Numéricos</title>
-  <style>
-    :root {
-      --bg: #0f172a;
-      --card-bg: #1e293b;
-      --accent: #38bdf8;
-      --text: #f8fafc;
-      --muted: #94a3b8;
-      --highlight: #f59e0b;
-      --border: #334155;
-    }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      background-color: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      margin: 0;
-      padding: 2rem 1rem;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    h1 {
-      text-align: center;
-      color: var(--accent);
-      margin-bottom: 2rem;
-    }
-
-    .exercise-card {
-      background-color: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin-bottom: 2rem;
-    }
-
-    h2 {
-      margin-top: 0;
-      font-size: 1.25rem;
-      color: var(--accent);
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 0.5rem;
-    }
-
-    p {
-      color: var(--muted);
-      margin-bottom: 1rem;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin: 1rem 0;
-      font-size: 0.95rem;
-    }
-
-    th, td {
-      border: 1px solid var(--border);
-      padding: 0.5rem 0.75rem;
-      text-align: center;
-    }
-
-    th {
-      background-color: #0b1120;
-      color: var(--accent);
-    }
-
-    .highlight {
-      color: var(--highlight);
-      font-weight: bold;
-    }
-
-    .result-box {
-      background-color: #0b1120;
-      border-left: 4px solid var(--accent);
-      padding: 0.75rem 1rem;
-      font-family: monospace;
-      font-size: 1.05rem;
-      margin-top: 1rem;
-    }
-
-    .arrow-up {
-      color: var(--highlight);
-      font-weight: bold;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desarrollo de Lógica Digital</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e9ecef;
+            color: #343a40;
+            line-height: 1.6;
+            padding: 20px;
+            margin: 0;
+        }
+        .container {
+            max-width: 850px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border-top: 5px solid #003366;
+        }
+        h1 {
+            color: #003366;
+            font-size: 1.8em;
+            margin-top: 0;
+            border-bottom: 2px solid #dee2e6;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #00509e;
+            font-size: 1.3em;
+            margin-top: 30px;
+            border-left: 4px solid #00509e;
+            padding-left: 10px;
+        }
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        .formula {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 1.2em;
+            text-align: center;
+            color: #d63384;
+            margin: 20px 0;
+            letter-spacing: 1px;
+        }
+        table {
+            width: 100%;
+            max-width: 450px;
+            border-collapse: collapse;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #adb5bd;
+            padding: 12px;
+            text-align: center;
+            font-size: 1.1em;
+        }
+        th {
+            background-color: #003366;
+            color: #ffffff;
+        }
+        td.highlight {
+            background-color: #e3f2fd;
+            font-weight: bold;
+            color: #00509e;
+        }
+        .step-box {
+            background-color: #fdfdfe;
+            border: 1px solid #e9ecef;
+            padding: 25px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Resolución de Función Booleana y Circuito Lógico</h1>
+        <p>El siguiente documento detalla el procedimiento metodológico para obtener la función canónica, aplicar la simplificación algebraica correspondiente y estructurar el diagrama lógico, cumpliendo con los estándares formales de diseño digital.</p>
 
-<div class="container">
-  <h1>Procedimiento de Conversión de Sistemas Numéricos</h1>
+        <div class="step-box">
+            <h2>1. Obtención de la Función Booleana (Suma de Productos)</h2>
+            <p>El primer paso consiste en extraer los minitérminos directamente de la tabla de verdad. Un minitérmino se conforma evaluando exclusivamente las filas donde la variable de salida es <strong>S = 1</strong>. Las variables de entrada conservan su forma afirmativa (ej. x) si su valor lógico es 1, y toman su forma complementada (ej. x') si su valor lógico es 0.</p>
+            <ul>
+                <li>Fila (0,0,0) &rarr; <code>x'y'z'</code></li>
+                <li>Fila (0,0,1) &rarr; <code>x'y'z</code></li>
+                <li>Fila (0,1,1) &rarr; <code>x'yz</code></li>
+                <li>Fila (1,0,0) &rarr; <code>xy'z'</code></li>
+                <li>Fila (1,1,0) &rarr; <code>xyz'</code></li>
+                <li>Fila (1,1,1) &rarr; <code>xyz</code></li>
+            </ul>
+            <p>La función canónica (sin simplificar) se expresa como la disyunción lógica (suma) de todos los minitérminos obtenidos:</p>
+            <div class="formula">S = x'y'z' + x'y'z + x'yz + xy'z' + xyz' + xyz</div>
+        </div>
 
-  <!-- Ejercicio 1 -->
-  <div class="exercise-card">
-    <h2>1. Decimal a Binario: 3846₁₀ → Binario</h2>
-    <p>Método: <strong>Divisiones sucesivas entre 2</strong>. El resultado se lee desde el último residuo (abajo) hacia el primero (arriba).</p>
-    
-    <table>
-      <thead>
-        <tr>
-          <th>Paso</th>
-          <th>Operación</th>
-          <th>Cociente entero</th>
-          <th>Residuo</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>1</td><td>3846 ÷ 2</td><td>1923</td><td class="highlight">0</td></tr>
-        <tr><td>2</td><td>1923 ÷ 2</td><td>961</td><td class="highlight">1</td></tr>
-        <tr><td>3</td><td>961 ÷ 2</td><td>480</td><td class="highlight">1</td></tr>
-        <tr><td>4</td><td>480 ÷ 2</td><td>240</td><td class="highlight">0</td></tr>
-        <tr><td>5</td><td>240 ÷ 2</td><td>120</td><td class="highlight">0</td></tr>
-        <tr><td>6</td><td>120 ÷ 2</td><td>60</td><td class="highlight">0</td></tr>
-        <tr><td>7</td><td>60 ÷ 2</td><td>30</td><td class="highlight">0</td></tr>
-        <tr><td>8</td><td>30 ÷ 2</td><td>15</td><td class="highlight">0</td></tr>
-        <tr><td>9</td><td>15 ÷ 2</td><td>7</td><td class="highlight">1</td></tr>
-        <tr><td>10</td><td>7 ÷ 2</td><td>3</td><td class="highlight">1</td></tr>
-        <tr><td>11</td><td>3 ÷ 2</td><td>1</td><td class="highlight">1</td></tr>
-        <tr><td>12</td><td>1 ÷ 2</td><td>0</td><td class="highlight">1</td></tr>
-      </tbody>
-    </table>
+        <div class="step-box">
+            <h2>2. Simplificación mediante el Mapa de Karnaugh</h2>
+            <p>Para optimizar la implementación física del circuito, trasladamos los valores de la salida <strong>S</strong> a un Mapa de Karnaugh de 3 variables. El objetivo analítico es agrupar los "unos" lógicos adyacentes en potencias de 2 (en este escenario, agrupaciones de 2 celdas) para descartar variables redundantes.</p>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>x \ yz</th>
+                        <th>00</th>
+                        <th>01</th>
+                        <th>11</th>
+                        <th>10</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>0</th>
+                        <td class="highlight">1</td>
+                        <td class="highlight">1</td>
+                        <td class="highlight">1</td>
+                        <td>0</td>
+                    </tr>
+                    <tr>
+                        <th>1</th>
+                        <td class="highlight">1</td>
+                        <td>0</td>
+                        <td class="highlight">1</td>
+                        <td class="highlight">1</td>
+                    </tr>
+                </tbody>
+            </table>
 
-    <div class="result-box">
-      Lectura de abajo hacia arriba <span class="arrow-up">↑</span>: <strong>111100000110₂</strong>
+            <p>Aplicando las reglas de adyacencia espacial (incluyendo los extremos del mapa), formamos tres agrupaciones mínimas:</p>
+            <ul>
+                <li><strong>Agrupación 1 (Extremos superior e inferior, columna 00):</strong> Al unir la celda (0,00) con la celda (1,00), observamos que la variable <em>x</em> transita de 0 a 1, por lo que se anula. Las variables <em>y</em> y <em>z</em> permanecen en 0. Se obtiene el término <code>y'z'</code>.</li>
+                <li><strong>Agrupación 2 (Fila x=0, columnas 01 y 11):</strong> Al agrupar las celdas (0,01) y (0,11), la variable <em>y</em> cambia de estado, resultando en su anulación. Se obtiene el término <code>x'z</code>.</li>
+                <li><strong>Agrupación 3 (Fila x=1, columnas 11 y 10):</strong> Al agrupar las celdas (1,11) y (1,10), la variable <em>z</em> sufre una transición y se elimina. Se obtiene el término <code>xy</code>.</li>
+            </ul>
+            <p>La síntesis final de estos términos genera nuestra función booleana simplificada:</p>
+            <div class="formula">S = y'z' + x'z + xy</div>
+        </div>
+
+        <div class="step-box">
+            <h2>3. Diseño del Circuito Lógico Resultante</h2>
+            <p>La implementación en hardware de la función optimizada <code>S = y'z' + x'z + xy</code> exige la interconexión de compuertas lógicas fundamentales, estructuradas en tres etapas de procesamiento:</p>
+            <ul>
+                <li><strong>Etapa de Inversión (Compuertas NOT):</strong> Es necesario derivar las señales negadas para el circuito. Se conectan inversores lógicos a las líneas de entrada originales correspondientes para sintetizar las señales <code>x'</code>, <code>y'</code> y <code>z'</code>.</li>
+                <li><strong>Etapa de Multiplicación Lógica (Compuertas AND):</strong> Se implementan tres compuertas AND de dos entradas independientes para conformar cada término del producto:
+                    <ul>
+                        <li>La compuerta AND 1 procesa simultáneamente las señales <code>y'</code> y <code>z'</code>.</li>
+                        <li>La compuerta AND 2 procesa simultáneamente las señales <code>x'</code> y <code>z</code>.</li>
+                        <li>La compuerta AND 3 procesa simultáneamente las señales <code>x</code> y <code>y</code>.</li>
+                    </ul>
+                </li>
+                <li><strong>Etapa de Suma Lógica (Compuerta OR):</strong> Finalmente, las salidas individuales de las tres compuertas AND se rutean como entradas hacia una compuerta OR integradora (de tres entradas). La salida de esta compuerta evalúa la expresión completa y provee la señal final <strong>S</strong> del sistema.</li>
+            </ul>
+        </div>
     </div>
-  </div>
-
-  <!-- Ejercicio 2 -->
-  <div class="exercise-card">
-    <h2>2. Binario a Decimal: 1111000111₂ → Decimal</h2>
-    <p>Método: <strong>Suma de pesos posicionales</strong> (potencias de base 2).</p>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Posición</th>
-          <th>9</th><th>8</th><th>7</th><th>6</th><th>5</th><th>4</th><th>3</th><th>2</th><th>1</th><th>0</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td><strong>Dígito</strong></td>
-          <td class="highlight">1</td><td class="highlight">1</td><td class="highlight">1</td><td class="highlight">1</td>
-          <td>0</td><td>0</td><td>0</td>
-          <td class="highlight">1</td><td class="highlight">1</td><td class="highlight">1</td>
-        </tr>
-        <tr>
-          <td><strong>Potencia</strong></td>
-          <td>2⁹</td><td>2⁸</td><td>2⁷</td><td>2⁶</td><td>2⁵</td><td>2⁴</td><td>2³</td><td>2²</td><td>2¹</td><td>2⁰</td>
-        </tr>
-        <tr>
-          <td><strong>Valor</strong></td>
-          <td>512</td><td>256</td><td>128</td><td>64</td><td>32</td><td>16</td><td>8</td><td>4</td><td>2</td><td>1</td>
-        </tr>
-        <tr>
-          <td><strong>Subtotal</strong></td>
-          <td>512</td><td>256</td><td>128</td><td>64</td><td>0</td><td>0</td><td>0</td><td>4</td><td>2</td><td>1</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="result-box">
-      512 + 256 + 128 + 64 + 4 + 2 + 1 = <strong>967₁₀</strong>
-    </div>
-  </div>
-
-  <!-- Ejercicio 3 -->
-  <div class="exercise-card">
-    <h2>3. Octal a Decimal: 304₈ → Decimal</h2>
-    <p>Método: <strong>Suma ponderada con potencias de base 8</strong>.</p>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Dígito</th>
-          <th>Posición</th>
-          <th>Potencia</th>
-          <th>Cálculo</th>
-          <th>Resultado parcial</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="highlight">3</td>
-          <td>2</td>
-          <td>8² = 64</td>
-          <td>3 × 64</td>
-          <td>192</td>
-        </tr>
-        <tr>
-          <td class="highlight">0</td>
-          <td>1</td>
-          <td>8¹ = 8</td>
-          <td>0 × 8</td>
-          <td>0</td>
-        </tr>
-        <tr>
-          <td class="highlight">4</td>
-          <td>0</td>
-          <td>8⁰ = 1</td>
-          <td>4 × 1</td>
-          <td>4</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="result-box">
-      192 + 0 + 4 = <strong>196₁₀</strong>
-    </div>
-  </div>
-
-  <!-- Ejercicio 4 -->
-  <div class="exercise-card">
-    <h2>4. Hexadecimal a Decimal: 4B2CD₁₆ → Decimal</h2>
-    <p>Equivalencias: <strong>B = 11</strong>, <strong>C = 12</strong>, <strong>D = 13</strong>. Base: 16.</p>
-
-    <table>
-      <thead>
-        <tr>
-          <th>Carácter</th>
-          <th>Valor decimal</th>
-          <th>Posición</th>
-          <th>Potencia (16ⁿ)</th>
-          <th>Cálculo</th>
-          <th>Resultado parcial</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="highlight">4</td><td>4</td><td>4</td><td>16⁴ = 65,536</td><td>4 × 65,536</td><td>262,144</td>
-        </tr>
-        <tr>
-          <td class="highlight">B</td><td>11</td><td>3</td><td>16³ = 4,096</td><td>11 × 4,096</td><td>45,056</td>
-        </tr>
-        <tr>
-          <td class="highlight">2</td><td>2</td><td>2</td><td>16² = 256</td><td>2 × 256</td><td>512</td>
-        </tr>
-        <tr>
-          <td class="highlight">C</td><td>12</td><td>1</td><td>16¹ = 16</td><td>12 × 16</td><td>192</td>
-        </tr>
-        <tr>
-          <td class="highlight">D</td><td>13</td><td>0</td><td>16⁰ = 1</td><td>13 × 1</td><td>13</td>
-        </tr>
-      </tbody>
-    </table>
-
-    <div class="result-box">
-      262,144 + 45,056 + 512 + 192 + 13 = <strong>307,917₁₀</strong>
-    </div>
-  </div>
-</div>
-
 </body>
 </html>
