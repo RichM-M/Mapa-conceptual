@@ -3,168 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desarrollo de Lógica Digital</title>
+    <title>Solución de Circuito Lógico</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #e9ecef;
-            color: #343a40;
-            line-height: 1.6;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
             padding: 20px;
-            margin: 0;
+            display: flex;
+            justify-content: center;
         }
         .container {
-            max-width: 850px;
-            margin: 0 auto;
-            background-color: #ffffff;
-            padding: 40px;
+            background-color: #fff;
+            padding: 30px;
             border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            border-top: 5px solid #003366;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 700px;
+            width: 100%;
         }
         h1 {
-            color: #003366;
-            font-size: 1.8em;
-            margin-top: 0;
-            border-bottom: 2px solid #dee2e6;
+            color: #2c3e50;
+            font-size: 1.5em;
+            border-bottom: 2px solid #3498db;
             padding-bottom: 10px;
-        }
-        h2 {
-            color: #00509e;
-            font-size: 1.3em;
-            margin-top: 30px;
-            border-left: 4px solid #00509e;
-            padding-left: 10px;
-        }
-        p {
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-        .formula {
-            background-color: #f8f9fa;
-            padding: 15px;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-            font-family: 'Consolas', 'Courier New', monospace;
-            font-size: 1.2em;
-            text-align: center;
-            color: #d63384;
-            margin: 20px 0;
-            letter-spacing: 1px;
-        }
-        table {
-            width: 100%;
-            max-width: 450px;
-            border-collapse: collapse;
-            margin: 20px auto;
-        }
-        th, td {
-            border: 1px solid #adb5bd;
-            padding: 12px;
-            text-align: center;
-            font-size: 1.1em;
-        }
-        th {
-            background-color: #003366;
-            color: #ffffff;
-        }
-        td.highlight {
-            background-color: #e3f2fd;
-            font-weight: bold;
-            color: #00509e;
-        }
-        .step-box {
-            background-color: #fdfdfe;
-            border: 1px solid #e9ecef;
-            padding: 25px;
-            border-radius: 5px;
             margin-bottom: 20px;
         }
+        h2 {
+            color: #2980b9;
+            font-size: 1.2em;
+            margin-top: 25px;
+        }
+        .code-block {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-left: 4px solid #3498db;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 4px;
+            margin: 10px 0;
+            color: #d35400;
+        }
         ul {
-            padding-left: 20px;
+            line-height: 1.6;
         }
         li {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Resolución de Función Booleana y Circuito Lógico</h1>
-        <p>El siguiente documento detalla el procedimiento metodológico para obtener la función canónica, aplicar la simplificación algebraica correspondiente y estructurar el diagrama lógico, cumpliendo con los estándares formales de diseño digital.</p>
-
-        <div class="step-box">
-            <h2>1. Obtención de la Función Booleana (Suma de Productos)</h2>
-            <p>El primer paso consiste en extraer los minitérminos directamente de la tabla de verdad. Un minitérmino se conforma evaluando exclusivamente las filas donde la variable de salida es <strong>S = 1</strong>. Las variables de entrada conservan su forma afirmativa (ej. x) si su valor lógico es 1, y toman su forma complementada (ej. x') si su valor lógico es 0.</p>
-            <ul>
-                <li>Fila (0,0,0) &rarr; <code>x'y'z'</code></li>
-                <li>Fila (0,0,1) &rarr; <code>x'y'z</code></li>
-                <li>Fila (0,1,1) &rarr; <code>x'yz</code></li>
-                <li>Fila (1,0,0) &rarr; <code>xy'z'</code></li>
-                <li>Fila (1,1,0) &rarr; <code>xyz'</code></li>
-                <li>Fila (1,1,1) &rarr; <code>xyz</code></li>
-            </ul>
-            <p>La función canónica (sin simplificar) se expresa como la disyunción lógica (suma) de todos los minitérminos obtenidos:</p>
-            <div class="formula">S = x'y'z' + x'y'z + x'yz + xy'z' + xyz' + xyz</div>
+        <h1>Respuestas Directas de la Actividad</h1>
+        
+        <h2>1. Función Booleana (Minitérminos)</h2>
+        <p>Extraída directamente de las seis filas donde la salida es 1 en la tabla de verdad[cite: 6]:</p>
+        <div class="code-block">
+            S = x'y'z' + x'y'z + x'yz + xy'z' + xyz' + xyz
         </div>
 
-        <div class="step-box">
-            <h2>2. Simplificación mediante el Mapa de Karnaugh</h2>
-            <p>Para optimizar la implementación física del circuito, trasladamos los valores de la salida <strong>S</strong> a un Mapa de Karnaugh de 3 variables. El objetivo analítico es agrupar los "unos" lógicos adyacentes en potencias de 2 (en este escenario, agrupaciones de 2 celdas) para descartar variables redundantes.</p>
-            
-            <table>
-                <thead>
-                    <tr>
-                        <th>x \ yz</th>
-                        <th>00</th>
-                        <th>01</th>
-                        <th>11</th>
-                        <th>10</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th>0</th>
-                        <td class="highlight">1</td>
-                        <td class="highlight">1</td>
-                        <td class="highlight">1</td>
-                        <td>0</td>
-                    </tr>
-                    <tr>
-                        <th>1</th>
-                        <td class="highlight">1</td>
-                        <td>0</td>
-                        <td class="highlight">1</td>
-                        <td class="highlight">1</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <p>Aplicando las reglas de adyacencia espacial (incluyendo los extremos del mapa), formamos tres agrupaciones mínimas:</p>
-            <ul>
-                <li><strong>Agrupación 1 (Extremos superior e inferior, columna 00):</strong> Al unir la celda (0,00) con la celda (1,00), observamos que la variable <em>x</em> transita de 0 a 1, por lo que se anula. Las variables <em>y</em> y <em>z</em> permanecen en 0. Se obtiene el término <code>y'z'</code>.</li>
-                <li><strong>Agrupación 2 (Fila x=0, columnas 01 y 11):</strong> Al agrupar las celdas (0,01) y (0,11), la variable <em>y</em> cambia de estado, resultando en su anulación. Se obtiene el término <code>x'z</code>.</li>
-                <li><strong>Agrupación 3 (Fila x=1, columnas 11 y 10):</strong> Al agrupar las celdas (1,11) y (1,10), la variable <em>z</em> sufre una transición y se elimina. Se obtiene el término <code>xy</code>.</li>
-            </ul>
-            <p>La síntesis final de estos términos genera nuestra función booleana simplificada:</p>
-            <div class="formula">S = y'z' + x'z + xy</div>
+        <h2>2. Simplificación (Mapas de Karnaugh)</h2>
+        <p>Tras agrupar los unos adyacentes en el mapa, la función mínima resultante es[cite: 6]:</p>
+        <div class="code-block">
+            S = y'z' + x'z + xy
         </div>
 
-        <div class="step-box">
-            <h2>3. Diseño del Circuito Lógico Resultante</h2>
-            <p>La implementación en hardware de la función optimizada <code>S = y'z' + x'z + xy</code> exige la interconexión de compuertas lógicas fundamentales, estructuradas en tres etapas de procesamiento:</p>
-            <ul>
-                <li><strong>Etapa de Inversión (Compuertas NOT):</strong> Es necesario derivar las señales negadas para el circuito. Se conectan inversores lógicos a las líneas de entrada originales correspondientes para sintetizar las señales <code>x'</code>, <code>y'</code> y <code>z'</code>.</li>
-                <li><strong>Etapa de Multiplicación Lógica (Compuertas AND):</strong> Se implementan tres compuertas AND de dos entradas independientes para conformar cada término del producto:
-                    <ul>
-                        <li>La compuerta AND 1 procesa simultáneamente las señales <code>y'</code> y <code>z'</code>.</li>
-                        <li>La compuerta AND 2 procesa simultáneamente las señales <code>x'</code> y <code>z</code>.</li>
-                        <li>La compuerta AND 3 procesa simultáneamente las señales <code>x</code> y <code>y</code>.</li>
-                    </ul>
-                </li>
-                <li><strong>Etapa de Suma Lógica (Compuerta OR):</strong> Finalmente, las salidas individuales de las tres compuertas AND se rutean como entradas hacia una compuerta OR integradora (de tres entradas). La salida de esta compuerta evalúa la expresión completa y provee la señal final <strong>S</strong> del sistema.</li>
-            </ul>
-        </div>
+        <h2>3. Dibujo del Circuito Resultante</h2>
+        <p>Para dibujar el esquema lógico a partir de la ecuación simplificada[cite: 6], debes trazar lo siguiente:</p>
+        <ul>
+            <li><strong>Líneas de entrada:</strong> Tres cables principales correspondientes a <em>x, y, z</em>.</li>
+            <li><strong>3 Inversores (NOT):</strong> Conectados a las entradas para obtener <em>x', y'</em> y <em>z'</em>.</li>
+            <li><strong>3 Compuertas AND (de dos entradas):</strong>
+                <ul>
+                    <li>La primera recibe <em>y'</em> y <em>z'</em>.</li>
+                    <li>La segunda recibe <em>x'</em> y <em>z</em>.</li>
+                    <li>La tercera recibe <em>x</em> y <em>y</em>.</li>
+                </ul>
+            </li>
+            <li><strong>1 Compuerta OR (de tres entradas):</strong> Recibe las salidas de las tres compuertas AND anteriores y genera la línea de salida final <em>S</em>.</li>
+        </ul>
     </div>
 </body>
 </html>
