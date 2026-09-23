@@ -3,85 +3,293 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solución de Circuito Lógico</title>
+    <title>Desarrollo Detallado: Lógica Digital</title>
     <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #2980b9;
+            --accent: #e74c3c;
+            --bg-light: #f8f9fa;
+            --border: #dee2e6;
+        }
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: #ecf0f1;
             color: #333;
+            line-height: 1.6;
             padding: 20px;
-            display: flex;
-            justify-content: center;
+            margin: 0;
         }
         .container {
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            max-width: 700px;
-            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
         }
         h1 {
-            color: #2c3e50;
-            font-size: 1.5em;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
+            color: var(--primary);
+            text-align: center;
+            border-bottom: 3px solid var(--secondary);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
         }
         h2 {
-            color: #2980b9;
-            font-size: 1.2em;
-            margin-top: 25px;
+            color: #fff;
+            background-color: var(--secondary);
+            padding: 12px 20px;
+            border-radius: 6px;
+            margin-top: 40px;
         }
-        .code-block {
+        h3 {
+            color: var(--primary);
+            border-left: 4px solid var(--accent);
+            padding-left: 10px;
+        }
+        .explanation-box {
+            background-color: var(--bg-light);
+            border: 1px solid var(--border);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        .rule-box {
             background-color: #e8f4f8;
+            border-left: 5px solid var(--secondary);
             padding: 15px;
-            border-left: 4px solid #3498db;
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 1.2em;
+            margin: 20px 0;
+            font-weight: 500;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: #fff;
+        }
+        th, td {
+            border: 1px solid var(--border);
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: var(--primary);
+            color: #fff;
+        }
+        .highlight-row {
+            background-color: #e8f4f8;
             font-weight: bold;
-            border-radius: 4px;
-            margin: 10px 0;
+        }
+        .equation {
+            font-family: 'Courier New', monospace;
+            font-size: 1.4em;
+            text-align: center;
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            letter-spacing: 1px;
+            margin: 20px 0;
+        }
+        .kmap-table th, .kmap-table td {
+            font-size: 1.2em;
+            width: 20%;
+        }
+        .kmap-table .cell-1 {
+            background-color: #ffeaa7;
             color: #d35400;
+            font-weight: bold;
         }
-        ul {
-            line-height: 1.6;
+        .step-list li {
+            margin-bottom: 15px;
         }
-        li {
-            margin-bottom: 8px;
+        .term {
+            color: var(--accent);
+            font-weight: bold;
+            font-family: monospace;
+            font-size: 1.2em;
         }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h1>Respuestas Directas de la Actividad</h1>
+        <h1>Análisis y Diseño de Circuito Lógico</h1>
+        <p>Este documento desglosa paso a paso el proceso de diseño digital: desde la interpretación de los datos en bruto (Tabla de Verdad), pasando por la optimización matemática (Mapas de Karnaugh), hasta llegar a la arquitectura física del hardware (Circuito).</p>
+
+        <!-- PASO 1 -->
+        <h2>Paso 1: Obtención de la Función Booleana (Minitérminos)</h2>
         
-        <h2>1. Función Booleana (Minitérminos)</h2>
-        <p>Extraída directamente de las seis filas donde la salida es 1 en la tabla de verdad[cite: 6]:</p>
-        <div class="code-block">
+        <div class="explanation-box">
+            <h3>¿Qué estamos haciendo aquí?</h3>
+            <p>El objetivo es crear una ecuación matemática que describa exactamente cuándo nuestro sistema debe estar encendido (es decir, cuando <strong>S = 1</strong>). Para lograrlo, analizamos la tabla de verdad y extraemos un "Minitérmino" por cada fila exitosa.</p>
+            
+            <div class="rule-box">
+                <strong>La Regla de Oro de los Minitérminos:</strong><br>
+                Solo nos importan las filas donde la salida <strong>S es 1</strong>. En esas filas, multiplicamos las entradas (x, y, z) siguiendo esta condición:
+                <ul>
+                    <li>Si la variable vale <strong>0</strong>, se escribe con una comilla para negarla (ej. <span class="term">x'</span>).</li>
+                    <li>Si la variable vale <strong>1</strong>, se escribe normal (ej. <span class="term">x</span>).</li>
+                </ul>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>x</th>
+                    <th>y</th>
+                    <th>z</th>
+                    <th>Salida (S)</th>
+                    <th>Minitérmino extraído</th>
+                    <th>Explicación detallada</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="highlight-row">
+                    <td>0</td><td>0</td><td>0</td><td>1</td>
+                    <td><span class="term">x'y'z'</span></td>
+                    <td>Como las tres son 0, las tres se niegan.</td>
+                </tr>
+                <tr class="highlight-row">
+                    <td>0</td><td>0</td><td>1</td><td>1</td>
+                    <td><span class="term">x'y'z</span></td>
+                    <td>'x' e 'y' son 0 (se niegan). 'z' es 1 (queda normal).</td>
+                </tr>
+                <tr>
+                    <td>0</td><td>1</td><td>0</td><td>0</td>
+                    <td>-</td>
+                    <td>Ignoramos esta fila porque S = 0.</td>
+                </tr>
+                <tr class="highlight-row">
+                    <td>0</td><td>1</td><td>1</td><td>1</td>
+                    <td><span class="term">x'yz</span></td>
+                    <td>Solo 'x' es 0, por lo que es la única que se niega.</td>
+                </tr>
+                <tr class="highlight-row">
+                    <td>1</td><td>0</td><td>0</td><td>1</td>
+                    <td><span class="term">xy'z'</span></td>
+                    <td>'x' es 1 (normal). 'y' y 'z' son 0 (se niegan).</td>
+                </tr>
+                <tr>
+                    <td>1</td><td>0</td><td>1</td><td>0</td>
+                    <td>-</td>
+                    <td>Ignoramos esta fila porque S = 0.</td>
+                </tr>
+                <tr class="highlight-row">
+                    <td>1</td><td>1</td><td>0</td><td>1</td>
+                    <td><span class="term">xyz'</span></td>
+                    <td>'x' e 'y' son 1. Solo 'z' es 0 (se niega).</td>
+                </tr>
+                <tr class="highlight-row">
+                    <td>1</td><td>1</td><td>1</td><td>1</td>
+                    <td><span class="term">xyz</span></td>
+                    <td>Todas son 1. Ninguna se niega.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p>Para obtener la función final sin simplificar, unimos todos los minitérminos extraídos con un signo de suma (+). Esto significa: "El sistema enciende con la condición 1, O con la condición 2, O con la 3...":</p>
+        <div class="equation">
             S = x'y'z' + x'y'z + x'yz + xy'z' + xyz' + xyz
         </div>
 
-        <h2>2. Simplificación (Mapas de Karnaugh)</h2>
-        <p>Tras agrupar los unos adyacentes en el mapa, la función mínima resultante es[cite: 6]:</p>
-        <div class="code-block">
+
+        <!-- PASO 2 -->
+        <h2>Paso 2: Simplificación mediante Mapa de Karnaugh</h2>
+        
+        <div class="explanation-box">
+            <h3>¿Por qué simplificamos?</h3>
+            <p>La ecuación anterior es matemáticamente correcta, pero construirla requeriría demasiados cables y compuertas. El mapa de Karnaugh nos ayuda a agrupar condiciones similares para eliminar variables que no afectan el resultado.</p>
+            
+            <div class="rule-box">
+                <strong>Regla de Eliminación:</strong><br>
+                Al agrupar celdas con "1" que estén juntas (en parejas, de 4 en 4, etc.), observamos sus coordenadas. Si una variable cambia su valor (pasa de 0 a 1) dentro del mismo grupo, <strong>esa variable se elimina</strong> por ser irrelevante. Las variables que se mantienen constantes, se quedan.
+            </div>
+        </div>
+
+        <table class="kmap-table">
+            <thead>
+                <tr>
+                    <th>x \ yz</th>
+                    <th>00</th>
+                    <th>01</th>
+                    <th>11</th>
+                    <th>10</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>0</th>
+                    <td class="cell-1">1 (Grupo 1)</td>
+                    <td class="cell-1">1 (Grupo 2)</td>
+                    <td class="cell-1">1 (Grupo 2)</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <th>1</th>
+                    <td class="cell-1">1 (Grupo 1)</td>
+                    <td>0</td>
+                    <td class="cell-1">1 (Grupo 3)</td>
+                    <td class="cell-1">1 (Grupo 3)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Desglose de los Grupos Formados:</h3>
+        <ul class="step-list">
+            <li>
+                <strong>Grupo 1 (Extremos de la columna 00):</strong> El mapa de Karnaugh es continuo; los bordes superior e inferior se tocan. Agrupamos el 1 de arriba con el 1 de abajo.
+                <br><em>Análisis:</em> La variable 'y' se mantiene en 0 (<span class="term">y'</span>) y la 'z' se mantiene en 0 (<span class="term">z'</span>). Sin embargo, la variable 'x' cambia de la fila 0 a la fila 1. Como 'x' cambió, se elimina.
+                <br><em>Resultado de este grupo:</em> <span class="term">y'z'</span>
+            </li>
+            <li>
+                <strong>Grupo 2 (Fila superior, columnas 01 y 11):</strong> Agrupamos los dos unos adyacentes donde x = 0.
+                <br><em>Análisis:</em> La 'x' se mantiene en 0 (<span class="term">x'</span>) y la 'z' se mantiene en 1 (<span class="term">z</span>). La variable 'y' cambia de 0 a 1 entre esas columnas, por lo que se elimina.
+                <br><em>Resultado de este grupo:</em> <span class="term">x'z</span>
+            </li>
+            <li>
+                <strong>Grupo 3 (Fila inferior, columnas 11 y 10):</strong> Agrupamos los dos unos adyacentes donde x = 1.
+                <br><em>Análisis:</em> La 'x' se mantiene en 1 (<span class="term">x</span>) y la 'y' se mantiene en 1 (<span class="term">y</span>). La variable 'z' cambia de 1 a 0, por lo que se elimina.
+                <br><em>Resultado de este grupo:</em> <span class="term">xy</span>
+            </li>
+        </ul>
+
+        <p>Uniendo los resultados de los tres grupos, obtenemos nuestra ecuación optimizada lista para construirse:</p>
+        <div class="equation">
             S = y'z' + x'z + xy
         </div>
 
-        <h2>3. Dibujo del Circuito Resultante</h2>
-        <p>Para dibujar el esquema lógico a partir de la ecuación simplificada[cite: 6], debes trazar lo siguiente:</p>
-        <ul>
-            <li><strong>Líneas de entrada:</strong> Tres cables principales correspondientes a <em>x, y, z</em>.</li>
-            <li><strong>3 Inversores (NOT):</strong> Conectados a las entradas para obtener <em>x', y'</em> y <em>z'</em>.</li>
-            <li><strong>3 Compuertas AND (de dos entradas):</strong>
+
+        <!-- PASO 3 -->
+        <h2>Paso 3: Diseño del Circuito (Hardware)</h2>
+        
+        <div class="explanation-box">
+            <h3>Traducción de Matemáticas a Electrónica</h3>
+            <p>Cada símbolo en nuestra ecuación final (<span class="term">S = y'z' + x'z + xy</span>) representa un componente físico real. Para dibujar el circuito, debes seguir este flujo de datos en 3 etapas sucesivas.</p>
+        </div>
+
+        <ul class="step-list">
+            <li>
+                <strong>Etapa 1: Acondicionamiento de Entradas (Compuertas NOT)</strong>
+                <p>Nuestra ecuación necesita las versiones negadas de las variables (las que tienen comilla). Dibuja tres cables principales para <strong>x, y, z</strong>. De cada cable, saca una derivación y conéctala a un símbolo NOT (un triángulo con un círculo en la punta). Ahora tienes 6 cables disponibles para trabajar: x, y, z normales y x', y', z' negados.</p>
+            </li>
+            <li>
+                <strong>Etapa 2: Las Multiplicaciones (Compuertas AND)</strong>
+                <p>Cada par de letras que están juntas (como xy) representan una multiplicación lógica, que se hace con una compuerta AND (símbolo en forma de "D"). Dibuja tres compuertas AND:</p>
                 <ul>
-                    <li>La primera recibe <em>y'</em> y <em>z'</em>.</li>
-                    <li>La segunda recibe <em>x'</em> y <em>z</em>.</li>
-                    <li>La tercera recibe <em>x</em> y <em>y</em>.</li>
+                    <li>A la <strong>primera AND</strong>, conéctale el cable de <span class="term">y'</span> y el cable de <span class="term">z'</span>.</li>
+                    <li>A la <strong>segunda AND</strong>, conéctale el cable de <span class="term">x'</span> y el cable de <span class="term">z</span> (normal).</li>
+                    <li>A la <strong>tercera AND</strong>, conéctale el cable de <span class="term">x</span> (normal) y el de <span class="term">y</span> (normal).</li>
                 </ul>
             </li>
-            <li><strong>1 Compuerta OR (de tres entradas):</strong> Recibe las salidas de las tres compuertas AND anteriores y genera la línea de salida final <em>S</em>.</li>
+            <li>
+                <strong>Etapa 3: La Suma Final (Compuerta OR)</strong>
+                <p>Los signos de "+" en la ecuación significan que todos los resultados anteriores deben sumarse. Dibuja una gran compuerta OR (símbolo de escudo con la parte de atrás curva) al final de tu diagrama.</p>
+                <p>Toma las salidas de tus tres compuertas AND y conéctalas como entradas a esta única compuerta OR. La línea que salga de la punta de la compuerta OR es tu resultado final, etiquétalo como <strong>S</strong>.</p>
+            </li>
         </ul>
+
     </div>
 </body>
 </html>
