@@ -3,87 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Esquema de Circuito Lógico</title>
+    <title>Reducción de Expresiones Booleanas</title>
     <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --text-color: #2d3748;
+            --accent-color: #3182ce;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+        }
         body {
             font-family: 'Segoe UI', system-ui, sans-serif;
-            background-color: #f8f9fa;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 2rem;
+            margin: 0;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 40px;
+            justify-content: center;
         }
         .container {
-            background: white;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            width: 100%;
             max-width: 800px;
+            width: 100%;
         }
-        h2 { color: #2c3e50; text-align: center; margin-bottom: 30px; }
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .header h1 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+        .alert {
+            background-color: #fffaf0;
+            border-left: 4px solid #dd6b20;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+        }
+        .problem-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .problem-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            margin-top: 0;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .step {
+            margin-bottom: 1rem;
+        }
+        .step-label {
+            font-weight: 600;
+            color: #4a5568;
+        }
+        .equation {
+            display: block;
+            background-color: #edf2f7;
+            padding: 0.75rem;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 1.1rem;
+            text-align: center;
+            margin: 0.5rem 0;
+            color: #2b6cb0;
+        }
+        .result {
+            background-color: #ebf8fa;
+            border-left: 4px solid #38b2ac;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            font-weight: 600;
+        }
     </style>
-    <!-- Importamos Mermaid.js para renderizar los diagramas -->
-    <script type="module">
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-        mermaid.initialize({ startOnLoad: true, theme: 'base', themeVariables: { primaryColor: '#ffffff' } });
-    </script>
 </head>
 <body>
+
     <div class="container">
-        <h2>Diagrama Lógico Digital: S = y'z' + x'z + xy</h2>
-        
-        <!-- Definición del diagrama -->
-        <div class="mermaid">
-            graph LR
-                %% Estilos personalizados para parecer compuertas lógicas
-                classDef input fill:#34495e,stroke:#2c3e50,stroke-width:2px,color:#fff,font-weight:bold;
-                classDef notGate fill:#e74c3c,stroke:#c0392b,stroke-width:2px,color:#fff;
-                classDef andGate fill:#3498db,stroke:#2980b9,stroke-width:2px,color:#fff;
-                classDef orGate fill:#f39c12,stroke:#d35400,stroke-width:2px,color:#fff;
-                classDef output fill:#2ecc71,stroke:#27ae60,stroke-width:3px,color:#fff,font-weight:bold;
-
-                %% Entradas Principales
-                X([Entrada x]):::input
-                Y([Entrada y]):::input
-                Z([Entrada z]):::input
-
-                %% Etapa 1: Inversores (NOT)
-                NX>NOT x']:::notGate
-                NY>NOT y']:::notGate
-                NZ>NOT z']:::notGate
-
-                X --> NX
-                Y --> NY
-                Z --> NZ
-
-                %% Etapa 2: Compuertas AND (Multiplicadores)
-                AND1([Compuerta AND 1 <br> y'z']):::andGate
-                AND2([Compuerta AND 2 <br> x'z]):::andGate
-                AND3([Compuerta AND 3 <br> xy]):::andGate
-
-                %% Conexiones a la AND 1
-                NY --> AND1
-                NZ --> AND1
-
-                %% Conexiones a la AND 2
-                NX --> AND2
-                Z --> AND2
-
-                %% Conexiones a la AND 3
-                X --> AND3
-                Y --> AND3
-
-                %% Etapa 3: Compuerta OR (Sumador)
-                OR{{Compuerta OR}}:::orGate
-                S(((Salida S))):::output
-
-                %% Conexiones finales
-                AND1 --> OR
-                AND2 --> OR
-                AND3 --> OR
-                OR ==> S
+        <div class="header">
+            <h1>Álgebra de Boole: Reducción de Expresiones</h1>
+            <p>Desarrollo analítico paso a paso para minimizar las ecuaciones al número de literales requerido.</p>
         </div>
+
+        <div class="alert">
+            <strong>Nota sobre el documento original:</strong> Las expresiones algebraicas de la imagen contienen un error de tipografía frecuente: se perdieron las marcas de negación (apóstrofes) del documento original[cite: 9]. Si reduces la expresión <em>abc + abc + abc + abc + abc</em> tal como está escrita[cite: 9], la ley de idempotencia da como resultado simplemente <em>abc</em>, lo cual hace imposible llegar a los cinco literales solicitados[cite: 9]. El mismo problema de transcripción ocurre con las siguientes dos expresiones[cite: 9]. A continuación se resuelven utilizando las ecuaciones correctas.
+        </div>
+
+        <!-- Ejercicio 1 -->
+        <div class="problem-card">
+            <h2 class="problem-title">1. a'b'c' + a'b'c + a'bc + abc' + abc</h2>
+            <p><em>Objetivo: Reducir a cinco literales.</em></p>
+            
+            <div class="step">
+                <span class="step-label">Paso 1: Agrupar términos comunes.</span>
+                <p>Agrupamos los dos primeros términos por <em>a'b'</em> y los dos últimos por <em>ab</em>:</p>
+                <span class="equation">a'b'(c' + c) + a'bc + ab(c' + c)</span>
+            </div>
+            
+            <div class="step">
+                <span class="step-label">Paso 2: Aplicar postulado de complemento (x + x' = 1).</span>
+                <p>Como <em>c' + c = 1</em>:</p>
+                <span class="equation">a'b'(1) + a'bc + ab(1) = a'b' + a'bc + ab</span>
+            </div>
+
+            <div class="step">
+                <span class="step-label">Paso 3: Factorizar b.</span>
+                <p>Reordenamos y extraemos <em>b</em> de <em>a'bc</em> y <em>ab</em>:</p>
+                <span class="equation">a'b' + b(a'c + a)</span>
+            </div>
+
+            <div class="step">
+                <span class="step-label">Paso 4: Aplicar ley de absorción (x + x'y = x + y).</span>
+                <p>Dentro del paréntesis, <em>a + a'c</em> se simplifica a <em>a + c</em>:</p>
+                <span class="equation">a'b' + b(a + c)</span>
+            </div>
+
+            <div class="result">
+                Resultado final: a'b' + b(a + c) (Contiene los cinco literales solicitados: a', b', b, a, c)[cite: 9].
+            </div>
+        </div>
+
+        <!-- Ejercicio 2 -->
+        <div class="problem-card">
+            <h2 class="problem-title">2. bc + a'c + ab + bcd</h2>
+            <p><em>Objetivo: Reducir a cuatro literales[cite: 9].</em></p>
+            
+            <div class="step">
+                <span class="step-label">Paso 1: Aplicar ley de absorción.</span>
+                <p>Extraemos <em>bc</em> del primer y último término de la expresión original[cite: 9]:</p>
+                <span class="equation">bc(1 + d) + a'c + ab</span>
+            </div>
+            
+            <div class="step">
+                <span class="step-label">Paso 2: Simplificar por elemento neutro (1 + x = 1).</span>
+                <p>Al ser <em>1 + d = 1</em>:</p>
+                <span class="equation">bc(1) + a'c + ab = bc + a'c + ab</span>
+            </div>
+
+            <div class="step">
+                <span class="step-label">Paso 3: Aplicar el Teorema del Consenso (xy + x'z + yz = xy + x'z).</span>
+                <p>Reordenamos la ecuación a <em>ab + a'c + bc</em>. El consenso entre <em>ab</em> y <em>a'c</em> es <em>bc</em>. Al aparecer sumando, es redundante y se elimina.</p>
+                <span class="equation">ab + a'c</span>
+            </div>
+
+            <div class="result">
+                Resultado final: ab + a'c (Contiene los cuatro literales solicitados: a, b, a', c)[cite: 9].
+            </div>
+        </div>
+
+        <!-- Ejercicio 3 -->
+        <div class="problem-card">
+            <h2 class="problem-title">3. (a + c + d)(a + c' + d)(a + c + d')(a + b)</h2>
+            <p><em>Objetivo: Reducir a cuatro literales[cite: 9].</em></p>
+            
+            <div class="step">
+                <span class="step-label">Paso 1: Simplificar los dos primeros binomios.</span>
+                <p>Aplicamos la ley distributiva inversa <em>(X + Y)(X + Y') = X</em> tomando <em>X = a + d</em> y <em>Y = c</em>. La expresión completa original[cite: 9] se reduce a:</p>
+                <span class="equation">(a + d)(a + c + d')(a + b)</span>
+            </div>
+            
+            <div class="step">
+                <span class="step-label">Paso 2: Multiplicar el resultado por el tercer factor.</span>
+                <p>Usamos la ley distributiva <em>(X + Y)(X + Z) = X + YZ</em> tomando <em>X = a</em>:</p>
+                <span class="equation">a + d(c + d') = a + cd + dd'</span>
+                <p>Dado que <em>dd' = 0</em>, queda <em>(a + cd)</em>. La expresión ahora es:</p>
+                <span class="equation">(a + cd)(a + b)</span>
+            </div>
+
+            <div class="step">
+                <span class="step-label">Paso 3: Multiplicar los binomios finales.</span>
+                <p>Aplicamos nuevamente la misma ley distributiva <em>(X + YZ) = (X + Y)(X + Z)</em> con <em>X = a</em>:</p>
+                <span class="equation">a + (cd)b = a + bcd</span>
+            </div>
+
+            <div class="result">
+                Resultado final: a + bcd (Contiene los cuatro literales solicitados: a, b, c, d)[cite: 9].
+            </div>
+        </div>
+
     </div>
 </body>
 </html>
